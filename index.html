@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Trin's MYOB Upgrades Bookmarklet</title>
+</head>
+
+<body>
+<p> How to install and use Trinda's bookmarklet to watch active upgrade batches for completion.</p>
+<p>Note: You will need to click the bookmarklet every time you start a new batch.&nbsp;&nbsp;</p>
+<p>This bookmarklet will display the status of all ledgers in your active batch in a human-friendly format.<br>
+  It will also display the elapsed time, down to the nearest minute.</p>
+<p>First, you will need to open your browsers bookmarks toolbar. In Firefox, this can be done by right-clicking in the blank area to the left or right of the URL bar, and selecting "Bookmarks Toolbar"</p>
+<p>Next, drag the Search for in progress link  to your bookmarks toolbar: <a href="javascript:(function(){window.s0=document.createElement('script');window.s0.setAttribute('type', 'text/javascript');window.s0.setAttribute('src', 'https://trinda.dev/myob/script.js');document.getElementsByTagName('body')[0].appendChild(window.s0);})();">Search for in progress</a></p>
+<p>Now, open the upgrades dashboard, and select and provision your batch as normal. Make sure you click "<strong>Start Refresh</strong>", or this bookmarklet will not work correctly.&nbsp;</p>
+<p>Start pre-migration on your batch, and once all ledgers have the status of "In Progress" or "Waiting for Resource", click the "Search for in progress" bookmarklet.<br>
+  (Tip: Click the "Apply filters" button to refresh the status of your batch immediately)</p>
+<p>You should see the words "Search active" above the batch list, and after a short wait of 15 seconds, it will display the status of your active batch, and the current time elapsed.</p>
+<p>Once the batch is complete, an alert will popup saying there are no more ledgers in progress, and the Search active message will disappear.&nbsp;</p>
+<p>&nbsp;</p>
+<p>If you have any problems, PM me in MS Teams</p>
+<p>-Trinda&nbsp;</p>
+</body>
+</html>

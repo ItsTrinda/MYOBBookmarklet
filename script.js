@@ -484,14 +484,10 @@ function getDocumentAndSearch() {
 
   if (numFound === 0 && waitingResource === 0) {
     // All complete
-    var alertMessage =
-      "No more ledgers currently in progress. \nTime elapsed: ";
     endTime = new Date();
-
-    alertMessage = alertMessage + timeDiffCalc(endTime, startTime);
-
-    alert(alertMessage);
-
+	var alertMessage = `No more ledgers currently in progress. \nTime elapsed: ${timeDiffCalc(endTime, startTime)}`;
+    
+	alert(alertMessage);
     clearInterval(searchInterval);
     var element = document.getElementById("runningSearch");
     element.parentNode.removeChild(element);
@@ -501,47 +497,26 @@ function getDocumentAndSearch() {
     var completedMessage = "";
     var failedMessage = "";
     var currentTime = new Date();
-    var timeMessage = "Time elapsed: ";
-    timeMessage = timeMessage + timeDiffCalc(currentTime, startTime);
+    var timeMessage = `Time elapsed: ${timeDiffCalc(currentTime, startTime)}`;
 
     if (waitingResource > 0) {
-      console.log(
-        "Found " +
-          waitingResource.toString() +
-          " ledgers waiting to begin. Waiting"
-      );
-      waitingMessage =
-        "<h2>Found " +
-        waitingResource.toString() +
-        " ledger(s) waiting to begin.</h2>";
+      waitingMessage = `<h2>Found ${waitingResource.toString()} ledger(s) waiting to begin.</h2>`;
+	  console.log(waitingMessage);
     }
     if (numFound > 0) {
-      console.log(
-        "Found " + numFound.toString() + " ledger(s) in progress. Waiting"
-      );
-      inProgressMessage =
-        "<h2>Found " + numFound.toString() + " ledger(s) in progress.</h2>";
+      inProgressMessage = `<h2>Found ${numFound.toString()} ledger(s) in progress.</h2>`;
+	  console.log(inProgressMessage);
     }
     if (numCompleted > 0) {
-      console.log(`Found ${numCompleted.toString()} ledger(s) complete.`);
-      completedMessage =
-        "<h2>Found " + numCompleted.toString() + " ledger(s) completed.</h2>";
+      completedMessage = `<h2>Found ${numCompleted.toString()} ledger(s) completed.</h2>`;
+	  console.log(completedMessage);
     }
     if (numFailed > 0) {
-      failedMessage =
-        "<h2>Found " + numFailed.toString() + " ledger(s) failed.</h2>";
+      failedMessage = `<h2>Found ${numFailed.toString()} ledger(s) failed.</h2>`;
+	  console.log(failedMessage);
     }
 
-    runningHTML.innerHTML =
-      "<h1>Search active</h1>" +
-      completedMessage +
-      failedMessage +
-      waitingMessage +
-      inProgressMessage +
-      timeMessage +
-      "<hr />";
-    //numFound = 0;
-    //waitingResource = 0;
+    runningHTML.innerHTML = `<h1>Search active</h1> ${completedMessage} ${failedMessage} ${waitingMessage} ${inProgressMessage} ${timeMessage} <hr />`;
   }
 }
 
@@ -565,10 +540,16 @@ function timeDiffCalc(endDate, startDate) {
     difference += days === 1 ? `${days} day, ` : `${days} days, `;
   }
 
+  if (hours > 0) {
   difference +=
     hours === 0 || hours === 1 ? `${hours} hour, ` : `${hours} hours, `;
-  difference +=
-    minutes === 0 || minutes === 1 ? `${minutes} minute` : `${minutes} minutes`;
+  }
+  
+  if (minutes == 1) {
+	  difference += `${minutes} minute` ;
+  } else {
+	  difference += `${minutes} minutes`;
+  }
 
   return difference;
 }
